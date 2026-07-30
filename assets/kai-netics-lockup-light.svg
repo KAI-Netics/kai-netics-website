@@ -1,0 +1,10 @@
+<svg width="520" height="120" viewBox="0 0 520 120" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="KAI-Netics — Certified Precision. De-Risked Operations.">
+  <g transform="translate(56,66) scale(1.22)">
+    <path d="M0 -30 L-25 20 L25 20 L0 -30 Z" fill="none" stroke="#00A86B" stroke-width="4" stroke-linejoin="round"/>
+    <circle cx="0" cy="-10" r="15" fill="#0047AB"/>
+    <circle cx="0" cy="-10" r="5" fill="#00A86B"/>
+  </g>
+  <text x="122" y="66" font-family="Arial, Helvetica, sans-serif" font-size="46" font-weight="bold" fill="#0047AB">KAI-Netics</text>
+  <line x1="124" y1="80" x2="472" y2="80" stroke="#00A86B" stroke-width="2"/>
+  <text x="124" y="103" font-family="Arial, Helvetica, sans-serif" font-size="16.5" letter-spacing="0.6" fill="#33556F">Certified Precision. De-Risked Operations.</text>
+</svg>
