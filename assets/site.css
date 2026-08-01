@@ -144,3 +144,19 @@ footer{background:#f7fafc;color:var(--navy);padding:48px 0 26px;border-top:1px s
     animation: none;
   }
 }
+/* Pilot Partner application confirmation */
+.form-status.pilot-success:not(:empty) {
+  border-color: var(--cobalt);
+  background: linear-gradient(135deg, #eef6ff, #e5fff4);
+  color: var(--navy);
+  box-shadow: 0 14px 34px rgba(0, 71, 171, 0.24);
+}
+
+.form-status.pilot-success:not(:empty)::before {
+  background: linear-gradient(135deg, var(--cobalt), var(--jade));
+}
+
+.form-status.pilot-success:not(:empty)::after {
+  content: "Your Pilot Partner application has been received. KAI-Netics will review your qualifications and contact you when your capabilities align with an upcoming mission.";
+  color: #29465f;
+}
