@@ -7,7 +7,7 @@
 .bitems{padding:6px 24px}
 .bitems .head{display:flex;justify-content:space-between;padding:16px 0 12px;border-bottom:1px solid var(--line);color:var(--muted);font-size:14px;font-weight:700}
 .bitem{display:grid;grid-template-columns:88px minmax(0,1fr) auto;gap:18px;padding:20px 0;border-bottom:1px solid var(--line)}
-.bitem:last-child{border-bottom:0}
+.bitem:last-of-type{border-bottom:0}.bfoot{display:flex;justify-content:flex-end;padding:12px 0 16px;border-top:1px solid var(--line)}.bfoot button{background:none;border:1px solid var(--line);border-radius:10px;padding:8px 14px;color:var(--navy);font:inherit;font-weight:700;cursor:pointer}.bfoot button:hover{border-color:#b2333d;color:#b2333d}
 .bthumb{width:88px;height:88px;border-radius:12px;background:var(--navy) url('assets/part107-hero.jpg') center/cover}
 .bitem h2{font-size:18px;margin:0 0 4px;color:var(--navy)}
 .bitem .det{color:var(--muted);font-size:14px;line-height:1.5}
@@ -46,6 +46,7 @@
 <script>
 (function(){
  function money(n){return '$'+n.toLocaleString('en-US')}
+ function confirmBox(){return true}
  function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
  var wrap=document.getElementById('bwrap');
  function draw(){
@@ -56,7 +57,7 @@
   }
   var it=items[0];
   var rows=items.map(function(i){return '<div class="bitem"><div class="bthumb" role="img" aria-label="Part 107 Ground School"></div><div><h2>'+esc(i.name)+'</h2><div class="det">'+esc(i.detail)+'</div>'+(i.enrollee?'<div class="meta">Enrollee: <b>'+esc(i.enrollee)+'</b></div>':'')+'<div class="meta ok">Enrollment received · seat held once payment is received</div><div class="acts"><a href="'+i.page+'">Course details</a><button type="button" data-rm="'+i.sku+'">Remove</button></div></div><div class="bprice" id="lp-'+i.sku+'">'+money(i.priceCard)+'</div></div>'}).join('');
-  wrap.innerHTML='<div class="bgrid"><div class="bpanel bitems"><div class="head"><span>Enrollment</span><span>Price</span></div>'+rows+'</div>'+
+  wrap.innerHTML='<div class="bgrid"><div class="bpanel bitems"><div class="head"><span>Enrollment</span><span>Price</span></div>'+rows+'<div class="bfoot"><button type="button" id="bempty">Empty basket</button></div></div>'+
   '<aside class="bpanel bsum" aria-label="Order summary"><h2>Order summary</h2>'+
   '<label class="pm"><input type="radio" name="pm" value="card" checked><span class="t">Card · '+money(it.priceCard)+'</span><span class="s">Visa, Mastercard, Amex, Apple Pay and more, on Stripe\'s secure checkout</span></label>'+
   '<label class="pm"><input type="radio" name="pm" value="zelle"><span class="t">Zelle · '+money(it.priceZelle)+'</span><span class="s">Pay from your bank and save $'+(it.priceCard-it.priceZelle)+'</span></label>'+
@@ -65,6 +66,7 @@
   '<a class="btn btn-primary" id="checkout" href="'+it.stripe+'">Proceed to checkout</a>'+
   '<div class="zelle" id="zbox"><b>Send '+money(it.priceZelle)+' by Zelle to: kai-netics</b><br>The recipient shows as <b>Kevin Alexander International</b>. Put the enrollee\'s full name and "Part 107" in the memo. Your seat is held once we receive it, and we\'ll confirm by email.<button type="button" class="btn btn-teal" id="zdone" style="width:100%;margin-top:12px">I\'ve sent my Zelle payment</button></div>'+
   '<p class="fine">Payment is due 7 days before session 1. All payments are non-refundable but may be transferred to the next cohort. If KAI-Netics cancels or reschedules, you may choose a full refund or a free transfer. <a href="refund-policy.html">Read the full policy</a>.</p></aside></div>';
+  document.getElementById('bempty').addEventListener('click',function(){if(confirmBox()){C.clear();draw();}});
   wrap.querySelectorAll('[data-rm]').forEach(function(b){b.addEventListener('click',function(){C.remove(b.getAttribute('data-rm'));draw();});});
   var co=document.getElementById('checkout'),zb=document.getElementById('zbox');
   wrap.querySelectorAll('input[name=pm]').forEach(function(r){r.addEventListener('change',function(){
