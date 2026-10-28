@@ -202,6 +202,7 @@
  <div class="card" style="margin-top:22px">
   <div class="tabs" role="tablist"><button type="button" class="on" data-t="cohort">Enroll in Ground School</button><button type="button" id="remote" data-t="remote">Remote-interest list</button><button type="button" id="orgtab" data-t="org">Organization / sponsor</button></div>
   <p class="note cohort-only" style="margin-bottom:12px">Step 1 of enrollment: register for the inaugural in-person cohort. We'll contact respondents in timestamp order once the location and schedule are confirmed.</p>
+  <div class="cohort-only" style="border:2px solid #00A86B;border-radius:12px;padding:14px 16px;margin-bottom:16px;background:#f2fbf7"><b>Ready to pay now?</b> Card: $721 &nbsp;·&nbsp; Zelle: $699 to <b>kai-netics</b> (shows as Kevin Alexander International; put your name in the memo). Please also submit the form below so we have your schedule and location preferences. <a href="refund-policy.html">Refund policy</a>.<p style="margin-top:10px"><a class="btn btn-primary" href="https://buy.stripe.com/eVq9AT6BAh2b81bePA4ko00" target="_blank" rel="noopener">Pay $721 by card</a></p></div>
   <form id="kform" method="POST" action="#" novalidate>
    <input type="hidden" name="list" id="list" value="inaugural-in-person">
    <input type="hidden" name="submitted_at" id="submitted_at">
@@ -224,12 +225,12 @@
    <div id="guardian" style="display:none"><div class="row2"><div><label for="gn">Parent/guardian name *</label><input id="gn" name="guardian_name"></div><div><label for="ge">Parent/guardian email *</label><input id="ge" name="guardian_email" type="email"></div></div></div>
    <p id="u16" class="note" style="display:none;color:#b2333d">The FAA knowledge test requires a minimum age of 16, so Ground School isn't the right fit yet. You can still submit to hear about FAA TRUST and future programs for younger participants.</p>
    <div><label for="msg" id="msglbl">Anything we should know? (optional)</label><textarea id="msg" name="notes" rows="3"></textarea></div>
-   <label class="chk person-only"><input type="checkbox" name="ack" id="ack" required> I understand this registers my interest and sets my place in line. It isn't a payment or a guaranteed seat. *</label>
+   <label class="chk person-only"><input type="checkbox" name="ack" id="ack" required> I understand this form registers my interest and sets my place in line. Submitting it isn't a payment, and my seat is held once payment is received. *</label>
    <label class="chk"><input type="checkbox" name="newsletter" value="yes"> Send me occasional KAI-Netics updates (optional)</label>
    <button class="btn btn-primary" type="submit">Submit</button>
-   <p class="note">We collect only your city or ZIP, never a street address. Ground School payment happens later, on our processor's secure checkout, after you confirm the final location and schedule.</p>
+   <p class="note">We collect only your city or ZIP, never a street address. Card payments are processed on Stripe's secure checkout. You can pay now with the button above, or after we confirm the final location and schedule.</p>
   </form>
-  <div class="ok" id="ok"><h3>Thank you.</h3><p id="okmsg"></p></div>
+  <div class="ok" id="ok"><h3>Thank you.</h3><p id="okmsg"></p><div id="okpay" style="display:none;margin-top:14px"><p><b>Secure your seat:</b> pay $721 by card, or $699 by Zelle to <b>kai-netics</b> with your name in the memo. Payment is due 7 days before session 1. <a href="refund-policy.html">Refund policy</a>.</p><p style="margin-top:10px"><a class="btn btn-primary" href="https://buy.stripe.com/eVq9AT6BAh2b81bePA4ko00" target="_blank" rel="noopener">Pay $721 by card</a></p></div></div>
  </div>
 </div></section>
 
@@ -292,7 +293,8 @@
  function show(){f.style.display='none';var ok=document.getElementById('ok');ok.style.display='block';var m=document.getElementById('okmsg');
   if(list.value==='remote-interest') m.textContent="You're on the remote-interest list. We'll email you if we open a fully remote cohort. This isn't a payment or an enrollment.";
   else if(list.value==='partner-inquiry') m.textContent="We've received your partnership inquiry. Kevin Smith will follow up by email to talk through your goals.";
-  else m.textContent="You're on the inaugural cohort list, and we've recorded your response time. When the location and schedule are confirmed, we'll offer them to respondents in the order received. This isn't a payment or a reserved seat.";
+  else m.textContent="You're on the inaugural cohort list, and we've recorded your response time. When the location and schedule are confirmed, we'll offer them to respondents in the order received.";
+  var op=document.getElementById('okpay'); if(op) op.style.display=(list.value==='remote-interest'||list.value==='partner-inquiry')?'none':'block';
   ok.scrollIntoView({behavior:'smooth',block:'center'});}
 })();
 </script></main><footer><div class="container"><div class="footergrid"><div><img class="footerbrand" src="assets/kai-netics-lockup-light.svg" alt="KAI-Netics"><p>Commercial drone services, aerial intelligence, autonomous operations assessments, and mission-assured systems integration.</p></div><div><h3>Navigate</h3><ul><li><a href="index.html#services">Services</a></li><li><a href="index.html#assessments">Assessments</a></li><li><a href="part107-exam-prep.html">Part 107</a></li><li><a href="founder.html">Founder</a></li><li><a href="pilot-partners.html">Pilot Network</a></li><li><a href="refund-policy.html">Refund Policy</a></li></ul></div><div><h3>Contact</h3><ul><li><a href="mailto:kas@kai-netics.com">kas@kai-netics.com</a></li><li><a href="tel:+14432576836">443-257-6836</a></li><li>Baltimore, Maryland</li><li>UEI NP2YCPBQ2TG3 · CAGE 21PE4</li></ul></div></div><div class="copyright">© 2026 Kevin Alexander International L.L.C. dba KAI-Netics. All rights reserved. Founder experience reflects direct employment, consulting engagements, and client delivery assignments.</div></div></footer></body></html>
