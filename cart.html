@@ -1,0 +1,82 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Your Basket | KAI-Netics</title><meta name="description" content="Review your KAI-Netics enrollment and check out by card or Zelle."><meta name="robots" content="noindex"><meta name="theme-color" content="#071c34"><link rel="stylesheet" href="assets/site.css"><style id="nav-fit">.navlinks a{white-space:nowrap}</style><script src="assets/cart.js" defer></script><style id="basket">
+.basket{max-width:1100px;margin:0 auto;padding:40px 20px 72px}
+.basket h1{font-size:clamp(28px,4vw,38px);color:var(--navy);margin:0 0 6px}
+.basket .lede{color:var(--muted);margin:0 0 26px}
+.bgrid{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:26px;align-items:start}
+.bpanel{background:#fff;border:1px solid var(--line);border-radius:var(--radius);box-shadow:0 6px 24px rgba(5,31,57,.06)}
+.bitems{padding:6px 24px}
+.bitems .head{display:flex;justify-content:space-between;padding:16px 0 12px;border-bottom:1px solid var(--line);color:var(--muted);font-size:14px;font-weight:700}
+.bitem{display:grid;grid-template-columns:88px minmax(0,1fr) auto;gap:18px;padding:20px 0;border-bottom:1px solid var(--line)}
+.bitem:last-child{border-bottom:0}
+.bthumb{width:88px;height:88px;border-radius:12px;background:var(--navy) url('assets/part107-hero.jpg') center/cover}
+.bitem h2{font-size:18px;margin:0 0 4px;color:var(--navy)}
+.bitem .det{color:var(--muted);font-size:14px;line-height:1.5}
+.bitem .meta{font-size:14px;margin-top:8px}
+.bitem .ok{color:#0a7a50;font-weight:700}
+.bitem .acts{margin-top:10px;font-size:14px;display:flex;gap:14px;flex-wrap:wrap}
+.bitem .acts button{background:none;border:0;padding:0;color:var(--cobalt);font:inherit;cursor:pointer;text-decoration:underline}
+.bprice{font-weight:800;font-size:18px;color:var(--navy);text-align:right;font-variant-numeric:tabular-nums}
+.bsum{padding:22px 22px 24px;position:sticky;top:20px}
+.bsum h2{font-size:18px;margin:0 0 14px;color:var(--navy)}
+.pm{display:block;border:2px solid var(--line);border-radius:12px;padding:12px 14px;margin-bottom:10px;cursor:pointer}
+.pm:has(input:checked){border-color:var(--jade);background:#f2fbf7}
+.pm input{margin-right:8px;accent-color:#00A86B}
+.pm .t{font-weight:800;color:var(--navy)}
+.pm .s{display:block;color:var(--muted);font-size:13px;margin:4px 0 0 24px}
+.srow{display:flex;justify-content:space-between;padding:6px 0;font-size:15px}
+.stotal{border-top:1px solid var(--line);margin-top:8px;padding-top:12px;font-weight:800;font-size:20px;color:var(--navy)}
+.stotal span:last-child{font-variant-numeric:tabular-nums}
+.bsum .btn{width:100%;justify-content:center;text-align:center;margin-top:14px}
+.zelle{display:none;margin-top:14px;padding:14px;border-radius:12px;background:var(--paper);font-size:14px;line-height:1.6}
+.zelle.on{display:block}
+.zelle b{color:var(--navy)}
+.fine{color:var(--muted);font-size:13px;line-height:1.55;margin-top:14px}
+.empty{padding:40px 28px;text-align:center}
+.empty h2{color:var(--navy);margin:0 0 8px}
+.empty p{color:var(--muted);margin:0 0 18px}
+.done{padding:28px;margin-bottom:22px;border-left:5px solid var(--jade)}
+@media(max-width:900px){.bgrid{grid-template-columns:1fr}.bsum{position:static}}
+@media(max-width:520px){.bitem{grid-template-columns:64px minmax(0,1fr)}.bthumb{width:64px;height:64px}.bprice{grid-column:2;text-align:left}}
+</style></head><body><a class="skip" href="#main">Skip to content</a><div class="utility"><div class="container"><strong>MARYLAND & MID-ATLANTIC</strong><a href="tel:+14432576836">443-257-6836</a><a href="mailto:kas@kai-netics.com">kas@kai-netics.com</a></div></div><header><div class="container nav"><a class="brand" href="index.html" aria-label="KAI-Netics home"><img src="assets/kai-netics-lockup-dark.svg" alt="KAI-Netics — Certified Precision. De-Risked Operations."></a><nav class="navlinks" aria-label="Primary"><a href="index.html">Home</a><a href="index.html#services">Services</a><a href="index.html#industries">Industries</a><a href="index.html#assessments">Assessments</a><a href="part107-exam-prep.html">Part 107</a><a href="founder.html">Founder</a><a href="pilot-partners.html">Pilot Network</a><a class="btn btn-primary" href="index.html#quote">Get a Quote</a></nav><a class="btn btn-primary mobile" href="index.html#quote">Get Quote</a></div></header><main id="main"><div class="basket">
+ <h1>Your Basket</h1>
+ <p class="lede">Review your enrollment, choose how to pay, and check out.</p>
+ <div id="bwrap"></div>
+</div>
+<noscript><p style="max-width:820px;margin:0 auto 40px;padding:0 20px">Please enable JavaScript to use the basket, or email <a href="mailto:kas@kai-netics.com">kas@kai-netics.com</a> to enroll and pay.</p></noscript>
+<script>
+(function(){
+ function money(n){return '$'+n.toLocaleString('en-US')}
+ function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+ var wrap=document.getElementById('bwrap');
+ function draw(){
+  var C=window.KNCart; var items=C?C.items():[];
+  if(!items.length){
+   wrap.innerHTML='<div class="bpanel empty"><h2>Your basket is empty</h2><p>Enroll in FAA Part 107 Ground School and your enrollment will appear here, ready for checkout.</p><a class="btn btn-primary" href="part107-exam-prep.html#signup">Enroll in Ground School</a></div>';
+   return;
+  }
+  var it=items[0];
+  var rows=items.map(function(i){return '<div class="bitem"><div class="bthumb" role="img" aria-label="Part 107 Ground School"></div><div><h2>'+esc(i.name)+'</h2><div class="det">'+esc(i.detail)+'</div>'+(i.enrollee?'<div class="meta">Enrollee: <b>'+esc(i.enrollee)+'</b></div>':'')+'<div class="meta ok">Enrollment received · seat held once payment is received</div><div class="acts"><a href="'+i.page+'">Course details</a><button type="button" data-rm="'+i.sku+'">Remove</button></div></div><div class="bprice" id="lp-'+i.sku+'">'+money(i.priceCard)+'</div></div>'}).join('');
+  wrap.innerHTML='<div class="bgrid"><div class="bpanel bitems"><div class="head"><span>Enrollment</span><span>Price</span></div>'+rows+'</div>'+
+  '<aside class="bpanel bsum" aria-label="Order summary"><h2>Order summary</h2>'+
+  '<label class="pm"><input type="radio" name="pm" value="card" checked><span class="t">Card · '+money(it.priceCard)+'</span><span class="s">Visa, Mastercard, Amex, Apple Pay and more, on Stripe\'s secure checkout</span></label>'+
+  '<label class="pm"><input type="radio" name="pm" value="zelle"><span class="t">Zelle · '+money(it.priceZelle)+'</span><span class="s">Pay from your bank and save $'+(it.priceCard-it.priceZelle)+'</span></label>'+
+  '<div class="srow"><span>Items (1)</span><span id="sitem">'+money(it.priceCard)+'</span></div>'+
+  '<div class="srow stotal"><span>Order total</span><span id="stot">'+money(it.priceCard)+'</span></div>'+
+  '<a class="btn btn-primary" id="checkout" href="'+it.stripe+'">Proceed to checkout</a>'+
+  '<div class="zelle" id="zbox"><b>Send '+money(it.priceZelle)+' by Zelle to: kai-netics</b><br>The recipient shows as <b>Kevin Alexander International</b>. Put the enrollee\'s full name and "Part 107" in the memo. Your seat is held once we receive it, and we\'ll confirm by email.<button type="button" class="btn btn-teal" id="zdone" style="width:100%;margin-top:12px">I\'ve sent my Zelle payment</button></div>'+
+  '<p class="fine">Payment is due 7 days before session 1. All payments are non-refundable but may be transferred to the next cohort. If KAI-Netics cancels or reschedules, you may choose a full refund or a free transfer. <a href="refund-policy.html">Read the full policy</a>.</p></aside></div>';
+  wrap.querySelectorAll('[data-rm]').forEach(function(b){b.addEventListener('click',function(){C.remove(b.getAttribute('data-rm'));draw();});});
+  var co=document.getElementById('checkout'),zb=document.getElementById('zbox');
+  wrap.querySelectorAll('input[name=pm]').forEach(function(r){r.addEventListener('change',function(){
+   var z=r.value==='zelle'&&r.checked; var p=z?it.priceZelle:it.priceCard;
+   document.getElementById('sitem').textContent=money(p);document.getElementById('stot').textContent=money(p);document.getElementById('lp-'+it.sku).textContent=money(p);
+   co.style.display=z?'none':''; zb.classList.toggle('on',z);
+  });});
+  document.getElementById('zdone').addEventListener('click',function(){
+   wrap.innerHTML='<div class="bpanel done"><h2 style="margin:0 0 8px;color:var(--navy)">Thank you. We\'ll confirm your payment by email.</h2><p style="margin:0;color:var(--muted)">Once your Zelle payment of '+money(it.priceZelle)+' to kai-netics arrives, your seat is held. Questions? Email <a href="mailto:kas@kai-netics.com">kas@kai-netics.com</a> or call 443-257-6836.</p></div>';
+   C.clear();
+  });
+ }
+ if(window.KNCart) draw(); else document.addEventListener('DOMContentLoaded',draw);
+})();
+</script></main><footer><div class="container"><div class="footergrid"><div><img class="footerbrand" src="assets/kai-netics-lockup-light.svg" alt="KAI-Netics"><p>Commercial drone services, aerial intelligence, autonomous operations assessments, and mission-assured systems integration.</p></div><div><h3>Navigate</h3><ul><li><a href="index.html#services">Services</a></li><li><a href="index.html#assessments">Assessments</a></li><li><a href="part107-exam-prep.html">Part 107</a></li><li><a href="founder.html">Founder</a></li><li><a href="pilot-partners.html">Pilot Network</a></li><li><a href="refund-policy.html">Refund Policy</a></li></ul></div><div><h3>Contact</h3><ul><li><a href="mailto:kas@kai-netics.com">kas@kai-netics.com</a></li><li><a href="tel:+14432576836">443-257-6836</a></li><li>Baltimore, Maryland</li><li>UEI NP2YCPBQ2TG3 · CAGE 21PE4</li></ul></div></div><div class="copyright">© 2026 Kevin Alexander International L.L.C. dba KAI-Netics. All rights reserved. Founder experience reflects direct employment, consulting engagements, and client delivery assignments.</div></div></footer></body></html>
